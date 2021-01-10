@@ -42,7 +42,7 @@ namespace Calculator
                     case '/':
                         if (x == 0)
                         {
-                            _interactive.Output("Division by zero!");
+                            _interactive.OutputAsync("Division by zero!");
                         }
                         numbers.Push(y / x); break;
                 }

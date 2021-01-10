@@ -22,23 +22,23 @@ namespace Calculator
             {
                 do
                 {
-                    _interactive.Output($"Choose operating mode\nEnter '{keyboard}'(to input from keyboard) or '{file}':");
-                    mode = _interactive.InputLine();
+                    _interactive.OutputAsync($"Choose operating mode\nEnter '{keyboard}'(to input from keyboard) or '{file}':");
+                    mode = _interactive.InputLineAsync().Result;
                 } while (mode != keyboard && mode != file);
                 if (mode == keyboard)
                 {
-                    _interactive.Output("Enter expression:");
-                    string input = _interactive.InputLine();
+                    _interactive.OutputAsync("Enter expression:");
+                    string input = _interactive.InputLineAsync().Result;
                     string answer = rpn.GetAnswer(ref input);
-                    _interactive.Output($"{input}={answer}\n");
+                    _interactive.OutputAsync($"{input}={answer}\n");
                 }
                 else if (mode == file)
                 {
                     var path = string.Empty;
                     do
                     {
-                        _interactive.Output("Please,enter the path to the input file:");
-                        path = _interactive.InputLine();
+                        _interactive.OutputAsync("Please,enter the path to the input file:");
+                        path = _interactive.InputLineAsync().Result;
 
                     } while (!File.Exists(path));
                     var inputFile = new StreamReader(path);
@@ -51,14 +51,14 @@ namespace Calculator
                     }
                     do
                     {
-                        _interactive.Output("Please,enter the path to the output file:");
-                        path = _interactive.InputLine();
+                        _interactive.OutputAsync("Please,enter the path to the output file:");
+                        path = _interactive.InputLineAsync().Result;
 
                     } while (!File.Exists(path));
                     File.WriteAllText(path, output.ToString());
                 }
-                _interactive.Output($"Enter '{exit}' or any key to try again:");
-                flag = _interactive.InputLine();
+                _interactive.OutputAsync($"Enter '{exit}' or any key to try again:");
+                flag = _interactive.InputLineAsync().Result;
             } while (flag != exit);
         }
     }

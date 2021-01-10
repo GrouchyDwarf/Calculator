@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Calculator
 {
     public interface IInteractive
     {
-        void Output(string message);
-        string InputLine();
+        Task OutputAsync(string message);
+        Task<string> InputLineAsync();
     }
 }
 

@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Calculator
 {
     public class ConsoleInteractive : IInteractive
     {
-        public void Output(string message)
+        public Task OutputAsync(string message)
         {
-            Console.Write(message);
+            return Task.Factory.StartNew(() => Console.Write(message));
+            
         }
-        public string InputLine()
+        public Task<string> InputLineAsync()
         {
-            return Console.ReadLine();
+            return Task.FromResult(Console.ReadLine());
         }
     }
 }
