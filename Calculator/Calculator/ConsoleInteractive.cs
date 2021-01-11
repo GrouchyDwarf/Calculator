@@ -10,12 +10,15 @@ namespace Calculator
     {
         public Task OutputAsync(string message)
         {
-            return Task.Factory.StartNew(() => Console.Write(message));
+            Console.Write(message);
+            return Task.CompletedTask;
+            //return Task.Factory.StartNew(() => Console.Write(message));
             
         }
         public Task<string> InputLineAsync()
         {
             return Task.FromResult(Console.ReadLine());
+            //return Task.Factory.StartNew(() => Console.ReadLine());
         }
     }
 }
