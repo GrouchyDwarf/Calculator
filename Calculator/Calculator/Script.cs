@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Calculator
 {
@@ -11,7 +12,7 @@ namespace Calculator
         {
             _interactive = input;
         }
-        public async void RunScript(RPN rpn)
+        public async Task RunScript(RPN rpn)
         {
             var mode = string.Empty;
             const string keyboard = "keyboard";
